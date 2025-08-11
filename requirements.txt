@@ -5,10 +5,12 @@ langchain-community
 langchain-text-splitters
 chromadb # Vector storage
 
+
 # PDF and text processing
 pypdf
 pdf2image
 unstructured
+pytesseract  # For OCR PDF to TXT
 
 # Optional: for AWS Bedrock (if needed)
 boto3
