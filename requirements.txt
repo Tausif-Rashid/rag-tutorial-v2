@@ -1,5 +1,21 @@
-pypdf
+
+# Core LLM and RAG dependencies
 langchain
+langchain-community
+langchain-text-splitters
 chromadb # Vector storage
-pytest
+
+# PDF and text processing
+pypdf
+pdf2image
+unstructured
+
+# Optional: for AWS Bedrock (if needed)
 boto3
+
+# Testing
+pytest
+
+# If using PDFs, you must also install Poppler:
+#   Windows: Download from https://github.com/oschwartz10612/poppler-windows/releases/ and add to PATH
+#   Linux: sudo apt-get install poppler-utils

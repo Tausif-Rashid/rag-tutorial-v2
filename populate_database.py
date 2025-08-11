@@ -1,11 +1,12 @@
 import argparse
 import os
 import shutil
+from langchain_community.document_loaders import DirectoryLoader
 from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
-from langchain.vectorstores.chroma import Chroma
+from langchain_community.vectorstores import Chroma
 
 
 CHROMA_PATH = "chroma"
@@ -14,7 +15,7 @@ DATA_PATH = "data"
 
 def main():
 
-    # Check if the database should be cleared (using the --clear flag).
+    # Check if the database should be cleared (using the --reset flag).
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
@@ -29,14 +30,15 @@ def main():
 
 
 def load_documents():
-    document_loader = PyPDFDirectoryLoader(DATA_PATH)
-    return document_loader.load()
+    loader = DirectoryLoader(DATA_PATH, glob="**/*.txt", show_progress=True)
+    pdfLoader = PyPDFDirectoryLoader(DATA_PATH)
+    return loader.load() + pdfLoader.load()
 
 
 def split_documents(documents: list[Document]):
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
-        chunk_overlap=80,
+        chunk_overlap=100,
         length_function=len,
         is_separator_regex=False,
     )
