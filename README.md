@@ -29,7 +29,7 @@ A simple Retrieval-Augmented Generation (RAG) and OCR pipeline using Python, Lan
 ## Usage
 
 1. **OCR PDFs:**
-    - For searchable PDF, place in  [`data`](data ) folder.
+    - For searchable PDF and txt, place in  [`data`](data ) folder.
 	- Place other PDFs in the [`ocr`](ocr ) folder.
 	- Run OCR:
 	  ```sh
@@ -49,7 +49,12 @@ A simple Retrieval-Augmented Generation (RAG) and OCR pipeline using Python, Lan
 	python query_data.py "Your question here"
 	```
 
+## Acknowledgement
+
+- Basic Rag pipeline is forked from this [Repo](https://github.com/pixegami/rag-tutorial-v2). Thanks to [Pixegami](https://github.com/pixegami).
+
+
 ## Notes
 - Requires Ollama running locally.
 - For best results, ensure all dependencies are installed and in your PATH.
-
+ 
